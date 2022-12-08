@@ -9,7 +9,6 @@ RSpec.describe 'Logins', type: :request do
       post url, params: { user: { email: user.email, password: user.password } }
 
       expect(response).to have_http_status(200)
-
     end
 
     it 'returns 401 when params are invalid' do
