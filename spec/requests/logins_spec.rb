@@ -9,14 +9,19 @@ RSpec.describe 'Logins', type: :request do
       post url, params: { user: { email: user.email, password: user.password } }
 
       expect(response).to have_http_status(200)
-      p response.body
+
     end
 
     it 'returns 401 when params are invalid' do
       post url, params: { user: { email: user.email, password: 'wrongpassword' } }
 
       expect(response).to have_http_status(401)
-      p response.body
+    end
+
+    it 'returns 401 when user does not exist' do
+      post url, params: { user: { email: 'example2em@gmia.com', password: 'password' } }
+
+      expect(response).to have_http_status(401)
     end
   end
 end
