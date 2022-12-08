@@ -1,14 +1,14 @@
 class Users::SessionsController < Devise::SessionsController
   respond_to :json
 
+
+
   private
 
   def respond_with(resource, _opts = {})
-    # if the user exists and the password is correct
     if resource.persisted?
       render json: {
         status: { code: 200, message: 'Signed in successfully.' },
-        # data should be the user's data with the role, name, email, etc.
         data: UserSerializer.new(resource).serializable_hash[:data][:attributes]
       }, status: :ok
     else
@@ -30,3 +30,6 @@ class Users::SessionsController < Devise::SessionsController
     end
   end
 end
+
+# how to send authentication token to frontend after login
+# header: { 'Authorization': 'Bearer ' + token}
