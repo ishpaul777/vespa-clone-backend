@@ -5,6 +5,8 @@ class ProductsController < ApplicationController
   end
 
   def create
+    return unless current_user.role == 'admin'
+
     @product = Product.new(product_params)
     @product.user = current_user
 
