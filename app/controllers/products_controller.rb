@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
     @products = Product.all
+    render json: ProductSerializer.new(@products).serializable_hash[:data].map { |hash| hash[:attributes] }
   end
 
   def create
@@ -17,7 +18,7 @@ class ProductsController < ApplicationController
   private
 
   def product_params
-    params.require(:product).permit(:model, :price, :description, :color)
+    params.require(:product).permit(:model, :price, :description, :color, :image)
   end
 
 end
