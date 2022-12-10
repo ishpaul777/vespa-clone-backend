@@ -1,5 +1,6 @@
 class Product < ApplicationRecord
   belongs_to :user, optional: true
+  has_many :reserves, dependent: :delete_all, foreign_key: 'product_id'
 
   validates :model, presence: true
   validates :price, presence: true
