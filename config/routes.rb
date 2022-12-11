@@ -8,6 +8,11 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/current_user', to: 'users#logged_in_user'
 
-  resources :products, only: [ :create, :index, :destroy ]
+  resources :products, only: [ :create, :index, :destroy ] do
+    resources :reserves, only: [ :create ] 
+  end
+
+  resources :reserves, only: [ :index ]
+  
 
 end
