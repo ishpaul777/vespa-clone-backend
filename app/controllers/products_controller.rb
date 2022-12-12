@@ -4,6 +4,11 @@ class ProductsController < ApplicationController
     render json: ProductSerializer.new(@products).serializable_hash[:data].map { |hash| hash[:attributes] }
   end
 
+  def show
+    @product = Product.find(params[:id])
+    render json: ProductSerializer.new(@product).serializable_hash[:data][:attributes]
+  end
+
   def create
     return unless current_user.role == 'admin'
 
