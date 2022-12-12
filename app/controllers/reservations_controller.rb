@@ -1,26 +1,25 @@
 class ReservationsController < ApplicationController
-    def index
-        @Reservations = Reservation.joins(:user, :product).where('user_id' => current_user.id)
-        render json: @Reservations
-      end
+  def index
+    @reservations = Reservation.joins(:user, :product).where('user_id' => current_user.id)
+    render json: @reservations
+  end
 
-    
-      def create
-        @product = Product.find(params[:id])
-        @Reservation = Reservation.new(Reservation_params)
-        @Reservation.user_id = current_user.id
-        @Reservation.product_id = @product.id
-    
-        if @Reservation.save
-          render json: @Reservation, status: :created
-        else
-          render json: @Reservation.errors, status: :unprocessable_entity
-        end
-      end
-    
-      private
-    
-      def Reservation_params
-        params.require(:Reservation).permit(:Reservationd_date, :city)
-      end
+  def create
+    @product = Product.find(params[:id])
+    @reservations = Reservation.new(reservations_params)
+    @reservations.user_id = current_user.id
+    @reservations.product_id = @product.id
+
+    if @reservations.save
+      render json: @reservations, status: :created
+    else
+      render json: @reservations.errors, status: :unprocessable_entity
+    end
+  end
+
+  private
+
+  def reservations_params
+    params.require(:reservation).permit(:reservationd_date, :city)
+  end
 end

@@ -8,6 +8,7 @@ AllCops:
     - "Rakefile"
     - "node_modules/**/*"
     - "vendor/**/*"
+    - "spec/**/*"
 
   DisplayCopNames: true
 
@@ -30,7 +31,7 @@ Metrics/AbcSize:
 Metrics/ClassLength:
   Max: 150
 Metrics/BlockLength:
-  IgnoredMethods: ["describe"]
+  IgnoredMethods: ['describe']
   Max: 30
 
 Layout/EndOfLine:
@@ -65,6 +66,4 @@ Style/HashEachMethods:
 Style/HashTransformKeys:
   Enabled: false
 Style/HashTransformValues:
-  Enabled: false
-Style/RedundantConstantBase:
   Enabled: false
