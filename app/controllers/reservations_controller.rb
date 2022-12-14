@@ -5,7 +5,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    @product = Product.find(params[:id])
+    @product = Product.find(params[:product_id])
     @reservations = Reservation.new(reservations_params)
     @reservations.user_id = current_user.id
     @reservations.product_id = @product.id
@@ -20,6 +20,6 @@ class ReservationsController < ApplicationController
   private
 
   def reservations_params
-    params.require(:reservation).permit(:reservationd_date, :city)
+    params.require(:reservation).permit(:reserved_date, :city)
   end
 end
