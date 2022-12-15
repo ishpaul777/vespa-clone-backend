@@ -1,6 +1,7 @@
 class Product < ApplicationRecord
   belongs_to :user, optional: true
 
+  has_many :reservation, dependent: :destroy
   validates :model, presence: true
   validates :price, presence: true
   validates :description, presence: true

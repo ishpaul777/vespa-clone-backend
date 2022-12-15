@@ -22,6 +22,19 @@ class ProductsController < ApplicationController
     end
   end
 
+
+  def destroy
+    return unless current_user.role == 'admin'
+
+    @product = Product.find(params[:id])
+    if @product.destroy
+     render json: { message: 'Product deleted' }, status: :ok
+    else
+     render json: { message: 'Product not deleted' }, status: :unprocessable_entity
+    end
+
+  end
+
   private
 
   def product_params
