@@ -8,10 +8,9 @@ Rails.application.routes.draw do
   # root "articles#index"
   get '/current_user', to: 'users#logged_in_user'
 
-  resources :products, only: [ :create, :index, :destroy, :show ] do
-    resources :reservations, only: [ :create ] 
-  end
+  resources :products, only: [ :create, :index, :destroy, :show ]
 
-  resources :reservations, only: [ :index ]
+  get '/reservations', to: 'reservations#index'
+  post '/reservations/:product_id', to: 'reservations#create'
 
 end
