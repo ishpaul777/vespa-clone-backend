@@ -6,8 +6,7 @@ class ReservationsController < ApplicationController
   end
 
   def create
-    return unless current_user.role == 'admin'
-
+    
     @product = Product.find(params[:product_id])
     @reservations = Reservation.new(reservations_params)
     @reservations.user_id = current_user.id
@@ -21,7 +20,6 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-    return unless current_user.role == 'admin'
 
     @reservation = Reservation.find(params[:id])
 
