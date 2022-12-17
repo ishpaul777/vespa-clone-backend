@@ -12,5 +12,6 @@ Rails.application.routes.draw do
 
   get '/reservations', to: 'reservations#index'
   post '/reservations/:product_id', to: 'reservations#create'
+  delete '/reservations/:id', to: 'reservations#destroy'
 
 end

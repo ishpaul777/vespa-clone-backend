@@ -6,15 +6,29 @@ class ReservationsController < ApplicationController
   end
 
   def create
+    return unless current_user.role == 'admin'
+
     @product = Product.find(params[:product_id])
     @reservations = Reservation.new(reservations_params)
     @reservations.user_id = current_user.id
     @reservations.product = @product
 
     if @reservations.save
-      render json: @reservations, status: :created
+      render json: ReservationSerializer.new(@reservations).serializable_hash[:data][:attributes], status: :ok
     else
       render json: @reservations.errors, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    return unless current_user.role == 'admin'
+
+    @reservation = Reservation.find(params[:id])
+
+    if @reservation.destroy
+      render json: @reservation, status: :ok
+    else
+      render json: @reservation.errors, status: :unprocessable_entity
     end
   end
 
