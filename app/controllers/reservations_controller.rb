@@ -2,11 +2,12 @@ class ReservationsController < ApplicationController
   def index
     @reservation = Reservation.where(user_id: current_user.id)
 
-    render json: ReservationSerializer.new(@reservation).serializable_hash[:data].map{|hash| hash[:attributes] }, status: :ok
+    render json: ReservationSerializer.new(@reservation).serializable_hash[:data].map { |hash|
+                   hash[:attributes]
+                 }, status: :ok
   end
 
   def create
-    
     @product = Product.find(params[:product_id])
     @reservations = Reservation.new(reservations_params)
     @reservations.user_id = current_user.id
@@ -20,7 +21,6 @@ class ReservationsController < ApplicationController
   end
 
   def destroy
-
     @reservation = Reservation.find(params[:id])
 
     if @reservation.destroy
@@ -33,9 +33,8 @@ class ReservationsController < ApplicationController
   private
 
   def reservations_params
-    params.require(:reservation).permit(:city, :reserved_date,:product_id)
+    params.require(:reservation).permit(:city, :reserved_date, :product_id)
   end
 end
 
 # create reservation serializer
-

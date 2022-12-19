@@ -15,7 +15,6 @@ class ProductsController < ApplicationController
     @product = Product.new(product_params)
     @product.user = current_user
 
-
     if @product.save
       render json: ProductSerializer.new(@product).serializable_hash[:data][:attributes], status: :created
     else
@@ -23,17 +22,15 @@ class ProductsController < ApplicationController
     end
   end
 
-
   def destroy
     return unless current_user.role == 'admin'
 
     @product = Product.find(params[:id])
     if @product.destroy
-     render json: { message: 'Product deleted' }, status: :ok
+      render json: { message: 'Product deleted' }, status: :ok
     else
-     render json: { message: 'Product not deleted' }, status: :unprocessable_entity
+      render json: { message: 'Product not deleted' }, status: :unprocessable_entity
     end
-
   end
 
   private
