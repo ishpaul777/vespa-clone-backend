@@ -72,17 +72,6 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_125021) do
     t.index ["user_id"], name: "index_reservations_on_user_id"
   end
 
-  create_table "reserves", force: :cascade do |t|
-    t.string "city"
-    t.datetime "reserved_date"
-    t.bigint "user_id", null: false
-    t.bigint "product_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["product_id"], name: "index_reserves_on_product_id"
-    t.index ["user_id"], name: "index_reserves_on_user_id"
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -102,6 +91,4 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_12_125021) do
   add_foreign_key "products", "users"
   add_foreign_key "reservations", "products"
   add_foreign_key "reservations", "users"
-  add_foreign_key "reserves", "products"
-  add_foreign_key "reserves", "users"
 end
