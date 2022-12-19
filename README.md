@@ -10,7 +10,7 @@
 
 # 📖 [Vespa-App] <a name="about-project"></a>
 
-**[Vespa-App]** is a BackeEnd project to booking an appointment to try a motorcycleis
+**[Vespa-App]** is a BackEnd project to booking an appointment to try a motorcycleis
 
 ## 🛠 Built With <a name="built-with"></a>
 
