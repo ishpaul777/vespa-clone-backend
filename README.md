@@ -57,6 +57,11 @@ git clone https://github.com/ishpaul777/vespa-clone-backend
 ### Run project
 - cd hello-rails-back-end
 - run bundle install
+- in config diretory delete credentals.yml.enc file 
+- run rake secret and copy and save the key generated
+- run EDITOR="code --wait" rails credentials:edit
+- run EDITOR="nano" rails credentials:edit and add the saved generated key. As shown in the image below, do not change the value of the secret_key_base variable, add the devise variable and the jwt_secret_key variable, after the jwt_secret_key variable give two spaces and add the key generated and saved in the previous step:
+![nano](https://user-images.githubusercontent.com/21173712/208387017-b2141852-210b-475a-bb45-6e9a076f8013.png)
 - Open the file config\database.yml
 - Modify the connection parameters to point your Postgres Database: username: [your_user] password: [your_password]
 - run rake db:create
@@ -64,7 +69,13 @@ git clone https://github.com/ishpaul777/vespa-clone-backend
 - run rails server
 - Visit [localhost:3000](http://localhost:3000) in your browser!
 
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
+
+
+## 🛠 Link to Front-end <a name="built-with"></a>
+[Front-end](https://github.com/ishpaul777/vespa-clone-frontend)
+
 
 ## 👥 Authors <a name="authors"></a>
 
