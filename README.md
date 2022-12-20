@@ -70,6 +70,9 @@ git clone https://github.com/ishpaul777/vespa-clone-backend
 - Visit [localhost:3000](http://localhost:3000) in your browser!
 
 
+### Run Tests
+- run **rspec**
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
