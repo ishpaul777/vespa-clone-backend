@@ -1,9 +1,3 @@
-databases:
-  - name: vespa_clone
-    databaseName: vespa_clone
-    user: vespa_clone
-    plan: free
-
 services:
   - type: web
     name: vespa_clone
